@@ -55,7 +55,7 @@ export default function Home() {
   },[user,section,search]);
 
   const nav=["Feed","People","Groups","Events","Messages","Marketplace","Resources","Questions"];
-  const initials=useMemo(()=>user?.name.split(" ").map(x=>x[0]).join("").slice(0,2).toUpperCase()||"CC","[user]");
+  const initials=useMemo(()=>user?.name.split(" ").map(x=>x[0]).join("").slice(0,2).toUpperCase()||"CC",[user]);
   const submitAuth=async(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();setBusy(true);setMessage("");
     const data=Object.fromEntries(new FormData(e.currentTarget).entries());
