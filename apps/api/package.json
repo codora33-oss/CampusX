@@ -1,1 +1,33 @@
-{"name":"campusconnect-api","private":true,"scripts":{"dev":"tsx src/index.ts","build":"tsc","start":"node dist/index.js","prisma:generate":"prisma generate","prisma:migrate":"prisma migrate deploy"},"dependencies":{"@prisma/client":"latest","cors":"latest","express":"latest","zod":"latest"},"devDependencies":{"@types/cors":"latest","@types/express":"latest","@types/node":"latest","prisma":"latest","tsx":"latest","typescript":"latest"}}
+{
+  "name": "campusconnect-api",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^4.1.8"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.5.2",
+    "prisma": "^6.16.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.2"
+  }
+}
