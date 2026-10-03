@@ -33,6 +33,7 @@ model User {
   organizedEvents Event[] @relation("Organizer")
   eventAttendees EventAttendee[]
   messages Message[]
+  conversationMembers ConversationMember[]
   notifications Notification[]
   listings MarketplaceListing[]
   questions Question[]
