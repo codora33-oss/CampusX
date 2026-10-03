@@ -2,10 +2,11 @@
   "name":"campusconnect",
   "private":true,
   "workspaces":["apps/web","apps/api"],
+  "prisma":{"schema":"apps/api/prisma/schema.prisma"},
   "scripts":{
     "build":"npm run build -w apps/web && npm run build -w apps/api",
     "typecheck":"npm run typecheck -w apps/web && npm run typecheck -w apps/api",
-    "db:generate":"npm run prisma:generate -w apps/api",
+    "db:generate":"npx prisma generate",
     "db:migrate":"npm run prisma:migrate -w apps/api",
     "db:seed":"npm run prisma:seed -w apps/api"
   }
