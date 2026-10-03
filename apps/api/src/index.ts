@@ -206,7 +206,8 @@ app.get("/api/v1/conversations", auth, async (req: Req, res) => {
 app.post("/api/v1/conversations", auth, async (req: Req, res) => {
   const p = z.object({ userId: z.string() }).safeParse(req.body);
   if (!p.success || p.data.userId === req.userId) return res.status(400).json({ error: "Invalid recipient" });
-  const existing = await prisma.conversation.findFirst({ where: { members: { every: { userId: { in: [req.userId!, p.data.userId] } } }, _count: { members: { equals: 2 } } } });
+  const candidates = await prisma.conversation.findMany({ where: { members: { some: { userId: req.userId! } } }, include: { members: true }, take: 50 });
+  const existing = candidates.find((c) => c.members.length === 2 && c.members.some((m) => m.userId === p.data.userId));
   if (existing) return res.json({ conversation: existing });
   const conversation = await prisma.conversation.create({ data: { members: { create: [{ userId: req.userId! }, { userId: p.data.userId }] } } });
   res.status(201).json({ conversation });
