@@ -7,10 +7,30 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum Visibility { PUBLIC UNIVERSITY CONNECTIONS GROUP }
-enum GroupRole { OWNER ADMIN MODERATOR MEMBER }
-enum EventStatus { PUBLISHED CANCELLED }
-enum ListingStatus { ACTIVE RESERVED SOLD }
+enum Visibility {
+  PUBLIC
+  UNIVERSITY
+  CONNECTIONS
+  GROUP
+}
+
+enum GroupRole {
+  OWNER
+  ADMIN
+  MODERATOR
+  MEMBER
+}
+
+enum EventStatus {
+  PUBLISHED
+  CANCELLED
+}
+
+enum ListingStatus {
+  ACTIVE
+  RESERVED
+  SOLD
+}
 
 model User {
   id String @id @default(cuid())
